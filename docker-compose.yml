@@ -1,0 +1,40 @@
+version: "3.3"
+
+services:
+  dind1:
+    image: docker:dind
+    privileged: true
+    networks:
+      - nginx_net
+      - net
+    volumes:
+      - /var/lib/docker
+    ports:
+      - 2376:2375
+      
+  dind2:
+    image: docker:dind
+    privileged: true
+    networks:
+      - nginx_net
+      - net
+    volumes:
+      - /var/lib/docker
+    ports:
+      - 2379:2375
+      
+  dind3:
+    image: docker:dind
+    privileged: true
+    networks:
+      - nginx_net
+      - net
+    volumes:
+      - /var/lib/docker
+    ports:
+      - 2378:2375
+
+networks:
+  nginx_net:
+    external: true
+  net:
